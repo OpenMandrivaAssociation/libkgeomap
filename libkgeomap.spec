@@ -5,7 +5,7 @@
 Summary:	Library for browsing and arranging photos on a map
 Name:		libkgeomap
 Version:	15.04.3
-Release:	1
+Release:	2
 Epoch:		2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
