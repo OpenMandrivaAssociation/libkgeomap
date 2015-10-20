@@ -12,7 +12,7 @@ Group:		Graphical desktop/KDE
 Url:		http://www.kde.org
 Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	kdelibs-devel
-BuildRequires:	marble-devel
+BuildRequires:	cmake(Marble)
 BuildRequires:	pkgconfig(libkexiv2)
 
 %description
