@@ -1,6 +1,6 @@
 %define major 2
-%define libname %mklibname kgeomap %{major}
-%define devname %mklibname kgeomap -d
+%define libname %mklibname KF5KGeoMap %{major}
+%define devname %mklibname KF5KGeoMap -d
 
 Summary:	Library for browsing and arranging photos on a map
 Name:		libkgeomap
@@ -11,9 +11,19 @@ License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://www.kde.org
 Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:	kdelibs-devel
+BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Marble)
-BuildRequires:	pkgconfig(libkexiv2)
+BuildRequires:	cmake(KF5KExiv2)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5TextWidgets)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(WebKitWidgets)
+BuildRequires:	pkgconfig(Widgets)
+BuildRequires:	pkgconfig(Gui)
+BuildRequires:	pkgconfig(Xml)
+BuildRequires:	pkgconfig(Concurrent)
 
 %description
 Library for browsing and arranging photos on a map.
@@ -29,21 +39,23 @@ BuildArch:	noarch
 Data files for browsing and arranging photos on a map library.
 
 %files common
-%dir %{_kde_appsdir}/libkgeomap/
-%{_kde_appsdir}/libkgeomap/*
+%dir %{_datadir}/libkgeomap
+%{_datadir}/libkgeomap/*
 
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
 Summary:	Library for browsing and arranging photos on a map
 Group:		System/Libraries
-Requires:	%{name}-common
+Requires:	%{name}-common = %{EVRD}
+Obsoletes:	%{mklibname kgeomap 2} < 2:15.12.0
 
 %description -n %{libname}
 Library for browsing and arranging photos on a map.
 
 %files -n %{libname}
-%{_kde_libdir}/libkgeomap.so.%{major}*
+%{_libdir}/libKF5KGeoMap.so.%{major}*
+%{_libdir}/libKF5KGeoMap.so.10*
 
 #----------------------------------------------------------------------------
 
@@ -52,30 +64,25 @@ Summary:	Development files for %{name}
 Group:		System/Libraries
 Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{mklibname kgeomap -d} < 2:15.12.0
 
 %description -n %{devname}
 Development files for %{name}.
 
 %files -n %{devname}
-%{_kde_appsdir}/cmake/modules/FindKGeoMap.cmake
-%dir %{_kde_includedir}/libkgeomap/
-%{_kde_includedir}/libkgeomap/*.h
-%{_kde_libdir}/libkgeomap.so
-%{_kde_libdir}/pkgconfig/libkgeomap.pc
+%{_includedir}/KF5/KGeoMap
+%{_includedir}/KF5/libkgeomap_version.h
+%{_libdir}/cmake/KF5KGeoMap
+%{_libdir}/*.so
 
 #----------------------------------------------------------------------------
 
 %prep
 %setup -q
+%cmake_kde5
 
 %build
-%cmake_kde4 \
-	-DCMAKE_MINIMUM_REQUIRED_VERSION=3.1
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
-
-# Seems to be useless
-rm -f %{buildroot}%{_kde_bindir}/libkgeomap_demo
-
+%ninja_install -C build
