@@ -19,11 +19,11 @@ BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5KIO)
 BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(WebKitWidgets)
-BuildRequires:	pkgconfig(Widgets)
-BuildRequires:	pkgconfig(Gui)
-BuildRequires:	pkgconfig(Xml)
-BuildRequires:	pkgconfig(Concurrent)
+BuildRequires:	pkgconfig(Qt5WebKitWidgets)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	pkgconfig(Qt5Concurrent)
 
 %description
 Library for browsing and arranging photos on a map.
