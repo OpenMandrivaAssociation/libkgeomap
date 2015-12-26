@@ -1,4 +1,4 @@
-%define major 2
+%define major 5
 %define libname %mklibname KF5KGeoMap %{major}
 %define devname %mklibname KF5KGeoMap -d
 
@@ -19,6 +19,7 @@ BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5KIO)
 BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5WebKitWidgets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Gui)
@@ -34,7 +35,6 @@ Library for browsing and arranging photos on a map.
 %package common
 Summary:	Data files for browsing and arranging photos on a map library
 Group:		Graphical desktop/KDE
-BuildArch:	noarch
 
 %description common
 Data files for browsing and arranging photos on a map library.
@@ -87,3 +87,6 @@ Development files for %{name}.
 
 %install
 %ninja_install -C build
+
+# (tpg) not needed for now
+rm -rf %{buildroot}%{_bindir}/libkgeomap_demo
