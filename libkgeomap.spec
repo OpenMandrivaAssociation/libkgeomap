@@ -14,7 +14,7 @@ Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{ve
 Source1:	%{name}.rpmlintrc
 BuildRequires:	cmake(ECM)
 #BuildRequires:	cmake(Marble)
-BuildRequire:	marble-devel
+BuildRequires:	marble-devel
 BuildRequires:	cmake(KF5KExiv2)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5Config)
