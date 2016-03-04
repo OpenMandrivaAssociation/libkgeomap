@@ -13,7 +13,8 @@ Url:		http://www.kde.org
 Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Marble)
+#BuildRequires:	cmake(Marble)
+BuildRequire:	marble-devel
 BuildRequires:	cmake(KF5KExiv2)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5Config)
