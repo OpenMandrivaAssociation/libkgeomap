@@ -4,7 +4,7 @@
 
 Summary:	Library for browsing and arranging photos on a map
 Name:		libkgeomap
-Version:	17.03.80
+Version:	17.04.0
 Release:	1
 Epoch:		2
 License:	GPLv2+
@@ -42,7 +42,7 @@ Group:		Graphical desktop/KDE
 %description common
 Data files for browsing and arranging photos on a map library.
 
-%files common
+%files common -f %{name}.lang
 %dir %{_datadir}/libkgeomap
 %{_datadir}/libkgeomap/*
 
@@ -93,3 +93,4 @@ Development files for %{name}.
 
 # (tpg) not needed for now
 rm -rf %{buildroot}%{_bindir}/libkgeomap_demo
+%find_lang libkgeomap

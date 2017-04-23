@@ -1,4 +1,2 @@
-removed_sources:
-  libkgeomap-15.08.0.tar.xz: d7effd434d6405575cddea69589c03f6ae54f273
 sources:
-  libkgeomap-17.03.80.tar.xz: 002e6d2131cffcb6b1ee0dbcb667ad4248fe59f3
+  libkgeomap-17.04.0.tar.xz: dbf4378952e02336ae4d104bbe3059c3ae859c57
