@@ -4,7 +4,7 @@
 
 Summary:	Library for browsing and arranging photos on a map
 Name:		libkgeomap
-Version:	20.03.80
+Version:	20.03.90
 Release:	1
 Epoch:		2
 License:	GPLv2+
